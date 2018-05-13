@@ -1,6 +1,6 @@
 
-const circleSymbol = "<i class='far fa-circle fa-7x'></i>"
-const crossSymbol = "<i class='fas fa-times fa-9x'></i>"
+const circleSymbol = "O"
+const crossSymbol = "X"
 const tictactoeClick = document.getElementById('onx-parent');
 const fullResetButton = document.getElementById('reset-button');
 // const resetHTML = document.getElementById('tttboard-div');
@@ -11,9 +11,14 @@ var plyOneScore = 0;
 var plytwoScore = 0;
 var plyOneArr = [];
 var plyTwoArr = [];
+var plyAIArr = [];
 var p1 = true, p2 = true, p3 = true, p4 = true, p5 = true, p6 = true, p7 = true, p8 = true, p9 = true;
 
+startGame();
 
+function startGame(){
+
+};
 // Click event for placing the O or the X
 tictactoeClick.addEventListener("click", function(e){
 

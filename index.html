@@ -5,44 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TicTacToe</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 
-<div class="container">
+<div class="container"> <!-- Page container div -->
+  
   <div class="heading">
-    <h1>Tic Tac Toe</h1>
+    <h1>
+      <span class="color1">T</span>
+      <span class="color2">I</span>
+      <span class="color3">C</span>
+      <span class="color4">T</span>
+      <span class="color5">A</span>
+      <span class="color6">C</span>
+      <span class="color7">T</span>
+      <span class="color8">O</span>
+      <span class="color9">E</span>
+    </h1>
   </div>  
 
-  <div id="tttboard-div">
+  <div id="tttboard-div"> <!-- Start of tictactoe table element -->
     <table id="onx-parent">
 
       <tr>
         <td class="pos pos1" id="pos1"></td>
-        <td class="pos pos2 verticle" id="pos2"></td>
+        <td class="pos pos2" id="pos2"></td>
         <td class="pos pos3" id="pos3"></td>
       </tr>
 
       <tr>
-        <td class="pos pos4 horizontal" id="pos4"></td>
-        <td class="pos pos5 verticle horizontal" id="pos5"></td>
-        <td class="pos pos6 horizontal" id="pos6"></td>
+        <td class="pos pos4" id="pos4"></td>
+        <td class="pos pos5" id="pos5"></td>
+        <td class="pos pos6" id="pos6"></td>
       </tr>
 
       <tr>
         <td class="pos pos7" id="pos7"></td>
-        <td class="pos pos8 verticle" id="pos8"></td>
+        <td class="pos pos8" id="pos8"></td>
         <td class="pos pos9" id="pos9"></td>
       </tr>
 
     </table>
   </div> <!-- End of table div -->
 
-  <div class="options-div">
-    <button id="reset-button" class="reset">Reset</button>
-
+  <div class="new-game">
+    <p class="new-game-p"> Please choose number of players:</p>
+    <button class="one-player">One</button>
+    <button class="two-players">Two</button>
   </div>
+  
+  <div class="choose-symbol">
+    <p class="choose-symbol-p">Player one please choose your symbol:</p>
+    <button class="crossSelection">X</button>
+    <button class="naughtSelection">O</button>
+  </div>
+  
+  <div class="score-div-top">
+    <p class="score-div1 color2">Plyr #1 - <span class="p1s color5">0</span></p>
+    <p class="score-divider"> || </p>
+    <p class="score-div2 color7">Plyr #2 - <span class="p2s color5">0</span></p>
+    <break></break>
+    <button id="reset-button" class="reset">New Game</button>
+  </div>
+
 </div> <!-- End of Container Div -->
   
   <script type="text/javascript" src="app.js"></script>

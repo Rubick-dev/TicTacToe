@@ -1,37 +1,199 @@
+/* Element styling */
 body {
-  background: slategray;
+  font-family: 'Bungee Inline', cursive;
+  background: black;
+  color: white;
 }
 
 h1 {
-  margin-top: 40px;
-  margin-bottom: 50px;
+  font-weight: normal;
   text-align: center;
   font-size: 5rem;
+  margin: 4px !important;
+}
+
+.container {
+  margin: auto;
+}
+
+/* Table CSS */
+table {
+  margin: auto;
+  border-collapse: collapse;
+  background: slategray;
 }
 
 td {
-  width: 150px;
-  height: 150px;
+  border: 5px solid white;
+  font-family: 'Pangolin', cursive;
+  font-size: 5rem;
+  width: 130px;
+  height: 130px;
   align-content: center;
   text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  color:black;
+  /* color: rgb(255, 176, 0); */
 }
 
-table {
-  /* display:flex; */
-  margin: auto;
-}
-.verticle {
-  border-left: 6px solid black;
-  border-right: 6px solid black;
+
+/* Choose number of players popup */
+.new-game {
+  display: none;
+  justify-content: center;
+  margin-top: 30px;
 }
 
-.horizontal {
-  border-top: 6px solid black;
-  border-bottom: 6px solid black;
+.new-game-p {
+  display: inline;
+  padding-right:10px;
+  margin: 0;
+}
+.one-player {
+  display: inline;
+  margin-right: 10px;
 }
 
-.options-div {
-  align-content: center;
-  text-align: center;
-  margin-top: 50px;
+.two-players {
+  display: inline;
+}
+
+/* Choose the symbol for player 1*/
+
+.choose-symbol {
+  display: none;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.choose-symbol-p {
+  display: inline;
+  margin: 0;
+  padding-right: 10px;
+}
+
+.crossSelection,
+.naughtSelection {
+  display: inline;
+  margin-right:10px;
+}
+
+/* Display Score for current match and reset button */
+.score-div-top {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.score-divider,
+.score-div1,
+.score-div2 {
+  display: inline;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.score-div1 {
+padding-right: 30px;
+}
+
+.score-div2 {
+  padding-left: 30px;
+}
+
+/* .p1s, .p2s {font-size: 2.5rem;} */
+
+break{
+  flex-basis: 100%;
+  width: 0px; 
+  height: 0px; 
+  overflow: hidden;
+}
+
+.reset {
+  display: block;
+}
+
+@media only screen and (max-width: 549px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+
+/* electrocolours */
+
+.color1 {
+  color: #AA5239;
+}
+
+.color2 {
+  color: #2F456E;
+}
+
+.color3 {
+  color: #3A8831;
+}
+
+.color4 {
+  color: #413272;
+}
+
+.color5 {
+  color: #A4A63C;
+}
+
+.color6 {
+  color: #276B5C;
+}
+
+.color7 {
+  color: #9E3947;
+}
+
+.color8 {
+  color: #A77D3C;
+}
+
+.color9 {
+  color: #8A325D ;
+}
+
+/* on hover state */
+.pos1:hover {
+  background: #AA5239;
+}
+
+.pos2:hover {
+  background: #2F456E;
+}
+
+.pos3:hover {
+  background: #3A8831;
+}
+
+.pos4:hover {
+  background: #413272;
+}
+
+.pos5:hover{
+  background: #A4A63C;
+}
+
+.pos6:hover {
+  background: #276B5C;
+}
+
+.pos7:hover {
+  background: #9E3947;
+}
+
+.pos8:hover {
+  background: #A77D3C;
+}
+
+.pos9:hover {
+  background: #8A325D;
 }
