@@ -4,9 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>TicTacToe</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+
+<div class="container">
+  <div class="heading">
+    <h1>Tic Tac Toe</h1>
+  </div>  
+
+  <div id="tttboard-div">
+    <table id="onx-parent">
+
+      <tr>
+        <td class="pos pos1" id="pos1"></td>
+        <td class="pos pos2 verticle" id="pos2"></td>
+        <td class="pos pos3" id="pos3"></td>
+      </tr>
+
+      <tr>
+        <td class="pos pos4 horizontal" id="pos4"></td>
+        <td class="pos pos5 verticle horizontal" id="pos5"></td>
+        <td class="pos pos6 horizontal" id="pos6"></td>
+      </tr>
+
+      <tr>
+        <td class="pos pos7" id="pos7"></td>
+        <td class="pos pos8 verticle" id="pos8"></td>
+        <td class="pos pos9" id="pos9"></td>
+      </tr>
+
+    </table>
+  </div> <!-- End of table div -->
+
+  <div class="options-div">
+    <button id="reset-button" class="reset">Reset</button>
+
+  </div>
+</div> <!-- End of Container Div -->
   
+  <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
