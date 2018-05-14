@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TicTacToe</title>
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles.css">
@@ -13,7 +15,7 @@
 
 <div class="container"> <!-- Page container div -->
   
-  <div class="heading">
+  <div class="heading"> <!-- Electro colour heading -->
     <h1>
       <span class="color1">T</span>
       <span class="color2">I</span>
@@ -27,48 +29,54 @@
     </h1>
   </div>  
 
+
   <div id="tttboard-div"> <!-- Start of tictactoe table element -->
+    
+    <div class="end-game"> <!-- End game message -->
+      <div class="text">Test Text</div>
+    </div>
+
     <table id="onx-parent">
 
       <tr>
-        <td class="pos pos1" id="pos1"></td>
-        <td class="pos pos2" id="pos2"></td>
-        <td class="pos pos3" id="pos3"></td>
+        <td class="pos pos1" id="0"></td>
+        <td class="pos pos2" id="1"></td>
+        <td class="pos pos3" id="2"></td>
       </tr>
 
       <tr>
-        <td class="pos pos4" id="pos4"></td>
-        <td class="pos pos5" id="pos5"></td>
-        <td class="pos pos6" id="pos6"></td>
+        <td class="pos pos4" id="3"></td>
+        <td class="pos pos5" id="4"></td>
+        <td class="pos pos6" id="5"></td>
       </tr>
 
       <tr>
-        <td class="pos pos7" id="pos7"></td>
-        <td class="pos pos8" id="pos8"></td>
-        <td class="pos pos9" id="pos9"></td>
+        <td class="pos pos7" id="6"></td>
+        <td class="pos pos8" id="7"></td>
+        <td class="pos pos9" id="8"></td>
       </tr>
 
     </table>
   </div> <!-- End of table div -->
 
   <div class="new-game">
-    <p class="new-game-p"> Please choose number of players:</p>
-    <button class="one-player">One</button>
-    <button class="two-players">Two</button>
+    <p class="new-game-p">How many players?:</p>
+    <button class="players one-player" id="one" value="1">One</button>
+    <button class="players two-players" id="two" value="2">Two</button>
   </div>
   
   <div class="choose-symbol">
     <p class="choose-symbol-p">Player one please choose your symbol:</p>
-    <button class="crossSelection">X</button>
-    <button class="naughtSelection">O</button>
+    <button class="symbol crossSelection" value="X">X</button>
+    <button class="symbol naughtSelection" value="O">O</button>
   </div>
   
   <div class="score-div-top">
     <p class="score-div1 color2">Plyr #1 - <span class="p1s color5">0</span></p>
     <p class="score-divider"> || </p>
-    <p class="score-div2 color7">Plyr #2 - <span class="p2s color5">0</span></p>
+    <p class="score-div2 color7">Plyr <span class="aiswap">AI</span> - <span class="p2s color5">0</span></p>
     <break></break>
-    <button id="reset-button" class="reset">New Game</button>
+    <button id="reset-button" class="reset" onClick="initializeGame()">New Game</button>
   </div>
 
 </div> <!-- End of Container Div -->
