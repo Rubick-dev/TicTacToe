@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TicTacToe</title>
-  <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Graduate" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="styles.css">
@@ -29,33 +27,28 @@
     </h1>
   </div>  
 
+  <div class="game-message"> <!-- End game message -->
+    <div class="text">
+    </div>
+  </div>
 
   <div id="tttboard-div"> <!-- Start of tictactoe table element -->
-    
-    <div class="end-game"> <!-- End game message -->
-      <div class="text">Test Text</div>
-    </div>
-
     <table id="onx-parent">
-
       <tr>
         <td class="pos pos1" id="0"></td>
         <td class="pos pos2" id="1"></td>
         <td class="pos pos3" id="2"></td>
       </tr>
-
       <tr>
         <td class="pos pos4" id="3"></td>
         <td class="pos pos5" id="4"></td>
         <td class="pos pos6" id="5"></td>
       </tr>
-
       <tr>
         <td class="pos pos7" id="6"></td>
         <td class="pos pos8" id="7"></td>
         <td class="pos pos9" id="8"></td>
       </tr>
-
     </table>
   </div> <!-- End of table div -->
 
@@ -76,7 +69,8 @@
     <p class="score-divider"> || </p>
     <p class="score-div2 color7">Plyr <span class="aiswap">AI</span> - <span class="p2s color5">0</span></p>
     <break></break>
-    <button id="reset-button" class="reset" onClick="initializeGame()">New Game</button>
+    <button id="reset-button" class="reset" onClick="initializeGame()">Reset Game</button>
+    <button id="continue-button" class="continue" onClick="continueGame()">Continue Game</button>
   </div>
 
 </div> <!-- End of Container Div -->

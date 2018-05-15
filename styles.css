@@ -3,6 +3,7 @@ body {
   font-family: 'Bungee Inline', cursive;
   background: black;
   color: white;
+  min-width: 300px;
 }
 
 h1 {
@@ -39,12 +40,17 @@ td {
 }
 
 
-
-.end-game {
-  display: "none";
+.game-message {
+  display: none;
   text-align: center;
   justify-content: center;
+  margin-top: -30px;
 }
+
+.text {
+  color: #A4A63C;
+}
+
 
 /* Choose number of players popup */
 .new-game {
@@ -124,13 +130,6 @@ break{
   display: block;
 }
 
-@media only screen and (max-width: 549px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-}
-
-
 /* electrocolours */
 
 .color1 {
@@ -204,4 +203,17 @@ break{
 
 .pos9:hover {
   background: #8A325D;
+}
+
+
+@media only screen and (max-width: 666px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  h1 {
+    font-size: 2.5rem;
+  }
 }
