@@ -1,4 +1,4 @@
-
+// TIC TAC TOE APP
 const circleSymbol = "O"
 const crossSymbol = "X"
 const tttCells = document.querySelectorAll(".pos");
@@ -19,25 +19,23 @@ var ranPos, filteredPosLen; //part of the random position algorithm for the AI
 
 // Display messages
 var aiTurnMessage = "The AI is taking a turn";
-var ply1TurnMesage = "Your turn Player #1";
+var ply1TurnMessage = "Your turn Player #1";
 var ply2TurnMessage = "Your turn Player #2";
 var initMsg = "Please Choose Game Options below";
 
 
-initializeGame();
+initializeGame(); //starts the game
 
 
 // ##### On Page load sets up the variables and display #####
 function initializeGame(){ 
-  
   console.log("################## NEW GAME #########################");
-  //Setting Scores for players to zero
-  plyOneScore = 0;
-  plyTwoScore = 0;
+  // reseting variable values
+  plyOneScore = 0; // displays the score of player1
+  plyTwoScore = 0; // displays the score of player2
   // only runs this clearing when game ends and carrying onto next.
   clearGameBoard();
   // Sets the right elements to be showing on the page
-  // document.querySelector(".text").style.display = "none";
   setInitMsg();
   document.querySelector(".choose-symbol").style.display = "none";
   document.querySelector(".score-div-top").style.display = "none";
@@ -49,28 +47,36 @@ function initializeGame(){
   };
 };
 
-function setInitMsg(){
-  document.querySelector(".text").textContent = initMsg;
-  document.querySelector(".text").style.color = "#A4A63C";
-  document.querySelector(".game-message").style.display = "flex";
-}
 
+// ran after the continue button is pressed
 function continueGame(){
+  console.log("### Started new game after hitting Continue ###");
   clearGameBoard();
-  for (let i = 0; i < tttCells.length; i++) {
-    tttCells[i].addEventListener('click', turnAIClick, false);
+  document.querySelector(".continue").style.display = "none";
+  if (numPlayers == "one") {
+    for (let i = 0; i < tttCells.length; i++) {
+      tttCells[i].addEventListener('click', turnAIClick, false);
+    }
+    if (plyTurn == "2") {
+      console.log("AI Player turn first");
+      AIsTurn();
+      setTimeout(function() { turn(getRandomPos(), plyAI);
+      }, 2000);
+    } else {
+      ply1sTurn();
+    }
+  } else {
+    for (let j = 0; j < tttCells.length; j++){
+      tttCells[j].addEventListener('click', twoPlayerGame, false);
+    }
+    if (plyTurn == "2") {
+      console.log("Player 2 first go");
+      ply2sTurn();
+    } else {
+      ply1sTurn();
+    }
   }
   console.log(tttBoard + " after continue game button, array for tttBoard");
-  if (plyTurn == "2") {
-    console.log("Player 2 first go");
-    AIsTurn();
-    setTimeout(function() { turn(getRandomPos(), plyAI);
-    }, 2000);
-  } else {
-    console.log("Player 1 first go");
-    ply1sTurn();
-    // plyTurn == "1" ? ply1sTurn() : AIsTurn();
-  }
 };
 
 
@@ -123,52 +129,100 @@ function setPlayer1Symbol(symbol){ // after choosing p1's Symbol this code is ru
   plyOne = symbol.target.value == "X" ? crossSymbol : circleSymbol;
   console.log("Player one's symbol is " + plyOne);
   
-  // Displays the right opponent, sets oppoenents symbol and trigger correct game logic
-  if (numPlayers === "two") { //runs if two players was selected
+  // Displays the right opponent, sets oppoenents symbol and trigger correct game type logic
+  if (numPlayers == "two") { //runs if two players was selected
+    document.querySelector(".aiswap").textContent = "#2";
     plyTwo = plyOne == "X" ? circleSymbol : crossSymbol;
     console.log("Player two symbol is " + plyTwo);
-c 
+    for (let i = 0; i < tttCells.length; i++) {
+      tttCells[i].addEventListener('click', twoPlayerGame, false);
+    }
+    plyTurn == "1" ? ply1sTurn() : ply2sTurn();
 
+  // ## GAME AGAINST THE AI ONLY ###
   } else { // runs if one player was selected
     plyAI = plyOne == "X" ? circleSymbol : crossSymbol;
     console.log("Player AI's symbol is " + plyAI);
-    if (plyTurn == "2") {
-      console.log("Player 2 first go");
-      AIsTurn();
-      setTimeout(function() { turn(getRandomPos(), plyAI);
-      }, 2000);
-    } 
     for (let i = 0; i < tttCells.length; i++) {
       tttCells[i].addEventListener('click', turnAIClick, false);
     }
-    ply1sTurn();
-    plyTurn == "1" ? ply1sTurn() : AIsTurn();
+    if (plyTurn == "2") {
+      console.log("Player AI first go");
+      AIsTurn();
+      setTimeout(function() { turn(getRandomPos(), plyAI);
+      }, 2000);
+    } else {
+      ply1sTurn();
+      plyTurn == "1" ? ply1sTurn() : ply2sTurn();
+    }
   }
 };
 
+
+// MESSAGE DISPLAY Functions
+function setInitMsg(){
+  let el = document.querySelector(".game-message");
+  document.querySelector(".text").textContent = initMsg;
+  document.querySelector(".text").style.color = "#A4A63C";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
+};
+
 function AIsTurn(){
+  let el = document.querySelector(".game-message");
   document.querySelector(".text").textContent = aiTurnMessage;
   document.querySelector(".text").style.color = "#9E3947";
-  document.querySelector(".game-message").style.display = "flex";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
 };
 
 function ply1sTurn(){
-  document.querySelector(".text").textContent = ply1TurnMesage;
+  let el = document.querySelector(".game-message");
+  document.querySelector(".text").textContent = ply1TurnMessage;
   document.querySelector(".text").style.color = "#2F456E";
-  document.querySelector(".game-message").style.display = "flex";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
+};
+
+function ply2sTurn(){
+  let el = document.querySelector(".game-message");
+  document.querySelector(".text").textContent = ply2TurnMessage;
+  document.querySelector(".text").style.color = "#9E3947";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
 };
 
 function ply1WinsMsg(){
+  let el = document.querySelector(".game-message");
   document.querySelector(".text").textContent = "Player #1 Wins!";
   document.querySelector(".text").style.color = "#2F456E";
-  document.querySelector(".game-message").style.display = "flex";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
+};
+
+function ply2WinsMsg(){
+  let el = document.querySelector(".game-message");
+  document.querySelector(".text").textContent = "Player #2 Wins!";
+  document.querySelector(".text").style.color = "#9E3947";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
 };
 
 function plyAIWinsMsg(){
+  let el = document.querySelector(".game-message");
   document.querySelector(".text").textContent = "AI Wins!";
   document.querySelector(".text").style.color = "#9E3947";
-  document.querySelector(".game-message").style.display = "flex";
+  fadeIn(el, "flex");
+  // document.querySelector(".game-message").style.display = "flex";
+  return;
 };
+
 
 // ##### Function to activate on a click followed by computer turn #####
 function turnAIClick(tttbox){
@@ -176,10 +230,10 @@ function turnAIClick(tttbox){
     turn(tttbox.target.id, plyOne);
     if ((!checkWin(tttBoard, plyOne))){
       if (!checkIfTie()){
-      setTimeout(function() { 
-        turn(getRandomPos(), plyAI);
-      }, 2500);
-    }
+        setTimeout(function() { 
+          turn(getRandomPos(), plyAI);
+        }, 2500);
+      }
     }
   }
 };
@@ -188,25 +242,29 @@ function turnAIClick(tttbox){
 // ##### takes the turn after a click or after a computer takes a turn #####
 function turn(tttBoxID, playersSymbol){
   plyTurn = plyTurn == "1" ? 2 : 1;
-  plyTurn == "1" ? ply1sTurn() : AIsTurn();
-  console.log(plyTurn + " toggling the playersTurn");
-  // console.log(tttBoxID + " is the grid position, " + playersSymbol + " is the symbol of the players turn");
+  console.log(plyTurn + " has been changed to this players turn");
   tttBoard[tttBoxID] = playersSymbol;
   document.getElementById(tttBoxID).innerText = playersSymbol;
-  let gameWon = checkWin(tttBoard, playersSymbol);
-  console.log("### Checking to see if player " + plyTurn + " is a winner");
-  if (gameWon){
-    console.log("gameWon is true");
+  console.log(numPlayers + " - should be one or two and reps number of players");
+  if (numPlayers == "one") {
+    plyTurn == "1" ? ply1sTurn() : AIsTurn();
+    console.log(plyTurn + " toggling the playersTurn message betwen pl1 and AI");
+   } else {
+    plyTurn == "1" ? ply1sTurn() : ply2sTurn();
   }
+  let gameWon = checkWin(tttBoard, playersSymbol);
+  console.log("### Checking to see if player " + plyTurn + ", " + playersSymbol + " -symbol is a winner");
   if (gameWon) {
+    console.log("gameWon is true - running gameOver function");
     gameOver(gameWon);
   } else {
     console.log("Checking if game is a tie because gameWon is false")
-  checkIfTie();
+    checkIfTie();
   }
 };
 
 
+// Gets a random position for the AI - I call it "No Intelligence"
 function getRandomPos() {
   let filteredList = tttBoard.filter(s => typeof s == 'number');
   filteredPosLen = filteredList.length;
@@ -215,22 +273,27 @@ function getRandomPos() {
 };
 
 
+// Checks if a tie
 function checkIfTie() {
   console.log("###Checking if Tie ###")
-  console.log((tttBoard.filter(s => typeof s == 'number').length === 0)+ " no squares free if true");
+  console.log((tttBoard.filter(s => typeof s == 'number').length === 0) + " no squares free if true");
 	if (filteredPosLen === 0 || tttBoard.filter(s => typeof s == 'number').length === 0) {
 		for (var i = 0; i < tttCells.length; i++) {
 			tttCells[i].style.backgroundColor = "#A4A63C";
-			tttCells[i].removeEventListener('click', turnAIClick, false);
-		}
+      if (numPlayers == "one") {
+        tttCells[i].removeEventListener('click', turnAIClick, false);
+      } else {
+        tttCells[i].removeEventListener('click', twoPlayerGame, false);
+      }
+    }
     declareWinner("Tie Game!");
-    
-		return true;
+    return true;
 	}
 	return false;
 };
 
 
+// Checks when run if there is a winner
 function checkWin(board, player) {
 	let plays = board.reduce((a, e, i) => 
 		(e === player) ? a.concat(i) : a, []);
@@ -238,44 +301,80 @@ function checkWin(board, player) {
 	for (let [index, win] of winCombinations.entries()) {
 		if (win.every(elem => plays.indexOf(elem) > -1)) {
 			gameWon = {index: index, player: player};
-			break;
+      break;
 		}
 	}
 	return gameWon;
 };
 
+
+// when gameWon is no longer null and therfore we have a winner, display winning tiles and remove eventlistner
 function gameOver(gameWon) {
 	for (let index of winCombinations[gameWon.index]) {
-		document.getElementById(index).style.backgroundColor =
-			gameWon.player == plyOne ? "#2F456E" : "#9E3947";
-	}
-	for (var i = 0; i < tttCells.length; i++) {
-		tttCells[i].removeEventListener('click', turnAIClick, false);
-	}
-	declareWinner(gameWon.player == plyOne ? 1 : 2);
+		document.getElementById(index).style.backgroundColor = gameWon.player == plyOne ? "#2F456E" : "#9E3947";
+  }
+  if (numPlayers == "one"){
+    for (var i = 0; i < tttCells.length; i++) {
+      tttCells[i].removeEventListener('click', turnAIClick, false);
+    }
+    declareWinner(gameWon.player == plyOne ? 1 : 2);
+  } else {
+    for (var i = 0; i < tttCells.length; i++) {
+      tttCells[i].removeEventListener('click', twoPlayerGame, false);
+    }
+    declareWinner(gameWon.player == plyOne ? 1 : 3);
+  }
 };
 
 
-function declareWinner(who) {
-	document.querySelector(".game-message").style.display = "flex";
-  if (who == "Tie Game!") {
+// declaring the winner passing in the results array
+function declareWinner(result) {
+  document.querySelector(".game-message").style.display = "flex";
+  document.querySelector(".continue").style.display = "inline";
+  console.log(result + " result of calling declareWinner function")
+  if (result == "Tie Game!") {
     document.querySelector(".text").style.color = "#A4A63C";
-  } else if (who == 1) {
+    document.querySelector(".text").innerText = result;
+  } else if (result == 1) {
     ply1WinsMsg();
     plyOneScore ++;
     document.querySelector(".p1s").innerText = plyOneScore;
-  } else if (who == 2){
+  } else if (result == 2){
     plyAIWinsMsg();
     plyTwoScore ++;
     document.querySelector(".p2s").innerText = plyTwoScore;
+  } else if (result == 3){
+    ply2WinsMsg();
+    plyTwoScore ++;
+    document.querySelector(".p2s").innerText = plyTwoScore;
   }
-  // document.querySelector(".text").textContent = who;
+  return;
 };
-
-
 
 
 // Logic not done for two player game yet
-function twoPlayerGame(){
-  console.log("No logic fortwo player game yet!");
+function twoPlayerGame(tttbox){
+  if (typeof tttBoard[tttbox.target.id] == 'number'){
+    if (plyTurn == "1"){
+      turn(tttbox.target.id, plyOne);
+    } else {
+      turn(tttbox.target.id, plyTwo);
+    }
+  }
 };
+
+
+// fade in function for game messages
+function fadeIn(el, display){
+  el.style.opacity = 0;
+  el.style.display = display || "block";
+
+  (function fade() {
+    var val = parseFloat(el.style.opacity);
+    if (!((val += .01) > 1)) {
+      el.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+

@@ -57,6 +57,7 @@ td {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  color: #3A8831;
 }
 
 .new-game-p {
@@ -85,6 +86,7 @@ td {
   display: inline;
   margin: 0;
   padding-right: 10px;
+  color: #3A8831;
 }
 
 .crossSelection,
@@ -128,6 +130,10 @@ break{
 
 .reset {
   display: block;
+}
+
+.continue {
+  display: none;
 }
 
 /* electrocolours */
@@ -205,15 +211,119 @@ break{
   background: #8A325D;
 }
 
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 
+.fade-in {
+  opacity: 0;
+  animation: fadeIn .5s ease-in 1 forwards;
+}
+
+/* .is-paused {
+  animation-play-state: paused;
+} */
+
+
+/* ### Media Queries ### */
 @media only screen and (max-width: 666px) {
   h1 {
     font-size: 3.5rem;
   }
 }
 
-@media only screen and (max-width: 549px) {
+@media only screen and (max-width: 475px) {
   h1 {
     font-size: 2.5rem;
+  }
+
+  /* Table CSS */
+  td {
+    border: 4px solid white;
+    font-size: 3.5rem;
+    width: 100px;
+    height: 100px;
+  }
+
+  .game-message {
+    margin-top: 5px;
+  }
+  
+  .text {
+    color: #A4A63C;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .new-game,
+  .score-div-top {
+    font-size: 1.2rem;
+  }
+
+  .choose-symbol {
+    font-size: 1.2rem;
+    margin-left: 40px;
+  }
+
+  .score-div1,
+  .score-div2 {
+    font-size: 1.5rem;
+  }
+
+  .score-divider {
+    display: none;
+  }
+
+  .reset {
+    margin-top: 25px;
+  }
+}
+
+@media only screen and (max-width: 366px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  /* Table CSS */
+  td {
+    border: 3px solid white;
+    font-size: 3rem;
+    width: 90px;
+    height: 90px;
+  }
+
+  .game-message {
+    margin-top: 0;
+  }
+  
+  .text {
+    color: #A4A63C;
+    font-size: .8rem;
+    margin-bottom: 15px;
+  }
+
+  .new-game,
+  .score-div-top {
+    font-size: .8rem;
+  }
+
+  .choose-symbol {
+    font-size: .8rem;
+    margin-left: 20px;
+  }
+
+  .score-div1,
+  .score-div2 {
+    font-size: 1rem;
+  }
+
+  .score-divider {
+    display: none;
+  }
+
+  .reset {
+    margin-top: 25px;
   }
 }
