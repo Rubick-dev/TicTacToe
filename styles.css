@@ -6,6 +6,10 @@ body {
   min-width: 300px;
 }
 
+.heading {
+  line-height:100px;
+  margin-top: 20px;
+}
 h1 {
   font-family: 'Bungee Inline', cursive;
   font-weight: normal;
@@ -44,7 +48,8 @@ td {
   display: none;
   text-align: center;
   justify-content: center;
-  /* margin-top: -30px; */
+  margin-top: 15px; 
+  margin-bottom: 10px;
 }
 
 .text {
