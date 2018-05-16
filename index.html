@@ -52,7 +52,7 @@
       </table>
     </div> <!-- End of table div -->
 
-    <div class="new-game">
+    <div class="new-game"> <!-- Start of messages below TTTboard -->
       <p class="new-game-p">How many players?:</p>
       <button class="players one-player" id="one" value="1">One</button>
       <button class="players two-players" id="two" value="2">Two</button>
@@ -68,17 +68,15 @@
       <p class="score-div1 color2">Plyr #1 - <span class="p1s color5">0</span></p>
       <p class="score-divider"> || </p>
       <p class="score-div2 color7">Plyr <span class="aiswap">AI</span> - <span class="p2s color5">0</span></p>
-      <break></break>
-      <button id="reset-button" class="reset" onClick="location.reload()">Reset Game</button>
-      <button id="continue-button" class="continue" onClick="continueGame()">Next Game</button>
     </div>
 
+    <div class="buttons">
+      <button id="reset-button" class="reset" onClick="location.reload()">Reset Game</button>
+      <button id="continue-button" class="continue" onClick="continueGame()">Next Game</button>
+    </div> <!-- End of messages below TTTboard-->
+
   </div> <!-- End of Container Div -->
-  
-  <!-- keeping this for testing of normalising css, it didnt fix the spacing issues i had between chrome on tablet device and PC chrome-->
-  <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
   <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

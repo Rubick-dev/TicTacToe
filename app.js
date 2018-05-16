@@ -37,6 +37,7 @@ function initializeGame(){
   clearGameBoard();
   // Sets the right elements to be showing on the page
   setInitMsg();
+  document.querySelector(".buttons").style.display = "none";
   document.querySelector(".choose-symbol").style.display = "none";
   document.querySelector(".score-div-top").style.display = "none";
   document.querySelector(".new-game").style.display = "flex";
@@ -52,7 +53,7 @@ function initializeGame(){
 function continueGame(){
   console.log("### Started new game after hitting Continue ###");
   clearGameBoard();
-  document.querySelector(".continue").style.display = "none";
+  document.querySelector(".continue").style.visibility = "hidden";
   if (numPlayers == "one") {
     for (let i = 0; i < tttCells.length; i++) {
       tttCells[i].addEventListener('click', turnAIClick, false);
@@ -88,7 +89,7 @@ function clearGameBoard(){
   //Setting player to go first
   plyTurn = Math.floor(Math.random() * 2) + 1;
   console.log(plyTurn + " randomed players turn");
-  //Setting the tttcells to clear
+  //Setting the tttCells to clear
   for (let i = 0; i < tttCells.length; i++) {
     tttCells[i].innerText = '';
     tttCells[i].style.removeProperty('background-color');
@@ -121,6 +122,7 @@ function setPlayer1Symbol(symbol){ // after choosing p1's Symbol this code is ru
   // removes the symbol content and displays the score content
   document.querySelector(".choose-symbol").style.display = "none";
   document.querySelector(".score-div-top").style.display = "flex";
+  document.querySelector(".buttons").style.display = "flex";
   // cancels the listener for the symbol options
   for (let j = 0; j < playerSymbol.length; j++){
     playerSymbol[j].removeEventListener('click', setPlayer1Symbol, false);
@@ -165,7 +167,6 @@ function setInitMsg(){
   document.querySelector(".text").textContent = initMsg;
   document.querySelector(".text").style.color = "#A4A63C";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -174,7 +175,6 @@ function AIsTurn(){
   document.querySelector(".text").textContent = aiTurnMessage;
   document.querySelector(".text").style.color = "#9E3947";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -183,7 +183,6 @@ function ply1sTurn(){
   document.querySelector(".text").textContent = ply1TurnMessage;
   document.querySelector(".text").style.color = "#2F456E";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -192,7 +191,6 @@ function ply2sTurn(){
   document.querySelector(".text").textContent = ply2TurnMessage;
   document.querySelector(".text").style.color = "#9E3947";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -201,7 +199,6 @@ function ply1WinsMsg(){
   document.querySelector(".text").textContent = "Player #1 Wins!";
   document.querySelector(".text").style.color = "#2F456E";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -210,7 +207,6 @@ function ply2WinsMsg(){
   document.querySelector(".text").textContent = "Player #2 Wins!";
   document.querySelector(".text").style.color = "#9E3947";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -219,7 +215,6 @@ function plyAIWinsMsg(){
   document.querySelector(".text").textContent = "AI Wins!";
   document.querySelector(".text").style.color = "#9E3947";
   fadeIn(el, "flex");
-  // document.querySelector(".game-message").style.display = "flex";
   return;
 };
 
@@ -330,7 +325,7 @@ function gameOver(gameWon) {
 // declaring the winner passing in the results array
 function declareWinner(result) {
   document.querySelector(".game-message").style.display = "flex";
-  document.querySelector(".continue").style.display = "inline";
+  document.querySelector(".continue").style.visibility = "visible";
   console.log(result + " result of calling declareWinner function")
   if (result == "Tie Game!") {
     document.querySelector(".text").style.color = "#A4A63C";
@@ -377,4 +372,3 @@ function fadeIn(el, display){
     }
   })();
 }
-

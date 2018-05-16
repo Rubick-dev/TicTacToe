@@ -44,6 +44,7 @@ td {
 }
 
 
+/* Game message styling (Above TTTboard) */
 .game-message {
   display: none;
   text-align: center;
@@ -57,37 +58,81 @@ td {
 }
 
 
-/* Choose number of players popup */
-.new-game {
+/* Game message styling (below the tttboard) */
+.buttons,
+.new-game,
+.choose-symbol,
+.score-div-top {
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
   margin-top: 30px;
+  text-align: center;
+  align-items: center;
   color: #3A8831;
 }
 
-.new-game-p {
-  display: inline;
-  padding-right:10px;
-  margin: 0;
+.new-game,
+.choose-symbol,
+.score-div-top {
+  align-content: center;
+  justify-content: center;
 }
-.one-player {
+
+
+/* Choose number of players popup */
+.new-game-p {
+  /* line-height: 30px; */
   display: inline;
+  padding-right: 10px;
+  margin: 0;
+  vertical-align: middle;
+  align-content: center;
+  /* padding-top: 10px; */
+}
+
+.one-player {
+  /* display: inline; */
   margin-right: 10px;
 }
 
-.two-players {
-  display: inline;
+/* .two-players {
+  
+} */
+
+.one-player,
+.two-players,
+.symbol {
+  /* display: inline; */
+  width: 60px;
+  font-family: 'Bungee Inline', cursive;
+  background: #011B41;  /* fallback for old browsers */
+  border-radius: 10px;
+  box-shadow: 6px 5px 24px #0f0c29;
+  color: #A4A63C;
+  font-size: 1rem;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
 }
+.one-player:hover,
+.two-players:hover,
+.symbol:hover {
+  background: #9B0712;
+  background: linear-gradient(to right, #AA1D2E, #890010, #73000D);
+  text-decoration: none;
+}
+.one-player:focus,
+.two-players:focus,
+.symbol:focus  {
+  background: #AA1D2E;
+  outline: 0;
+}
+
 
 /* Choose the symbol for player 1*/
-
-.choose-symbol {
-  display: none;
-  justify-content: center;
-  margin-top: 30px;
-}
-
 .choose-symbol-p {
+  line-height: 25px;
   display: inline;
   margin: 0;
   padding-right: 10px;
@@ -100,7 +145,7 @@ td {
   margin-right:10px;
 }
 
-/* Display Score for current match and reset button */
+/* Display Score for current match */
 .score-div-top {
   display: none;
   flex-flow: row wrap;
@@ -124,25 +169,18 @@ padding-right: 30px;
   padding-left: 30px;
 }
 
-/* .p1s, .p2s {font-size: 2.5rem;} */
 
-break{
-  flex-basis: 100%;
-  width: 0px; 
-  height: 0px; 
-  overflow: hidden;
-}
-
+/* Buttons initial display form */
 .reset {
-  display: block;
+  display: inline-block;
 }
 
 .continue {
-  display: none;
+  visibility: hidden;
 }
 
-/* electrocolours */
 
+/* electrocolours */
 .color1 {
   color: #AA5239;
 }
@@ -179,7 +217,7 @@ break{
   color: #8A325D ;
 }
 
-/* on hover state */
+/* ON HOVER - SET BACKGROUND */
 .pos1:hover {
   background: #AA5239;
 }
@@ -216,6 +254,60 @@ break{
   background: #8A325D;
 }
 
+
+/* --- Button Styling --- */
+#reset-button {
+  margin-right: 20px;
+  font-family: 'Bungee Inline', cursive;
+  width: 120px;
+  background: #011B41;  /* fallback for old browsers */
+  background: linear-gradient(to right, #CA0018, #950011, #62000B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 10px;
+  box-shadow: 6px 5px 24px #0f0c29;
+  color: #A4A63C;
+  font-size: 1rem;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#reset-button:hover {
+  background: #9B0712;
+  background: linear-gradient(to right, #AA1D2E, #890010, #73000D);
+  text-decoration: none;
+}
+
+#reset-button:focus {
+  background: #AA1D2E;
+  outline: 0;
+}
+
+#continue-button {
+  margin-left: 20px;
+  font-family: 'Bungee Inline', cursive;
+  width: 120px;
+  background: #011B41;  /* fallback for old browsers */
+  background: linear-gradient(to right, #1B3D70, #082C61, #011B41); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 10px;
+  box-shadow: 6px 5px 24px #0f0c29;
+  color: #A4A63C;
+  font-size: 1rem;
+  padding: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#continue-button:hover {
+  background: #2079b0;
+  background-image: linear-gradient(to bottom, #142C73, #0A2574, #021F75);
+  text-decoration: none;
+}
+
+#continue-button:focus {
+  background: #142C73;
+  outline: 0;
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -226,10 +318,6 @@ break{
   opacity: 0;
   animation: fadeIn .5s ease-in 1 forwards;
 }
-
-/* .is-paused {
-  animation-play-state: paused;
-} */
 
 
 /* ### Media Queries ### */
@@ -253,7 +341,7 @@ break{
   }
 
   .game-message {
-    margin-top: 5px;
+    margin: 0;
   }
   
   .text {
@@ -263,12 +351,12 @@ break{
   }
 
   .new-game,
-  .score-div-top {
+  .score-div-top,
+  .choose-symbol {
     font-size: 1.2rem;
   }
 
   .choose-symbol {
-    font-size: 1.2rem;
     margin-left: 40px;
   }
 
@@ -279,10 +367,6 @@ break{
 
   .score-divider {
     display: none;
-  }
-
-  .reset {
-    margin-top: 25px;
   }
 }
 
@@ -300,7 +384,7 @@ break{
   }
 
   .game-message {
-    margin-top: 0;
+    margin: 0;
   }
   
   .text {
@@ -326,9 +410,5 @@ break{
 
   .score-divider {
     display: none;
-  }
-
-  .reset {
-    margin-top: 25px;
   }
 }
