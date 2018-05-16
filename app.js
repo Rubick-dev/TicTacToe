@@ -352,7 +352,7 @@ function declareWinner(result) {
 };
 
 
-// Logic not done for two player game yet
+// two player game mode turnclick
 function twoPlayerGame(tttbox){
   if (typeof tttBoard[tttbox.target.id] == 'number'){
     if (plyTurn == "1"){

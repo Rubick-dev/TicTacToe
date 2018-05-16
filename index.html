@@ -11,70 +11,73 @@
 </head>
 <body>
 
-<div class="container"> <!-- Page container div -->
-  
-  <div class="heading"> <!-- Electro colour heading -->
-    <h1>
-      <span class="color1">T</span>
-      <span class="color2">I</span>
-      <span class="color3">C</span>
-      <span class="color4">T</span>
-      <span class="color5">A</span>
-      <span class="color6">C</span>
-      <span class="color7">T</span>
-      <span class="color8">O</span>
-      <span class="color9">E</span>
-    </h1>
-  </div>  
+  <div class="container"> <!-- Page container div -->
+    
+    <div class="heading"> <!-- Electro colour heading -->
+      <h1>
+        <span class="color1">T</span>
+        <span class="color2">I</span>
+        <span class="color3">C</span>
+        <span class="color4">T</span>
+        <span class="color5">A</span>
+        <span class="color6">C</span>
+        <span class="color7">T</span>
+        <span class="color8">O</span>
+        <span class="color9">E</span>
+      </h1>
+    </div>  
 
-  <div class="game-message"> <!-- End game message -->
-    <div class="text fade-in ">
+    <div class="game-message"> <!-- End game message -->
+      <div class="text fade-in ">
+      </div>
     </div>
-  </div>
 
-  <div id="tttboard-div"> <!-- Start of tictactoe table element -->
-    <table id="onx-parent">
-      <tr>
-        <td class="pos pos1" id="0"></td>
-        <td class="pos pos2" id="1"></td>
-        <td class="pos pos3" id="2"></td>
-      </tr>
-      <tr>
-        <td class="pos pos4" id="3"></td>
-        <td class="pos pos5" id="4"></td>
-        <td class="pos pos6" id="5"></td>
-      </tr>
-      <tr>
-        <td class="pos pos7" id="6"></td>
-        <td class="pos pos8" id="7"></td>
-        <td class="pos pos9" id="8"></td>
-      </tr>
-    </table>
-  </div> <!-- End of table div -->
+    <div id="tttboard-div"> <!-- Start of tictactoe table element -->
+      <table id="onx-parent">
+        <tr>
+          <td class="pos pos1" id="0"></td>
+          <td class="pos pos2" id="1"></td>
+          <td class="pos pos3" id="2"></td>
+        </tr>
+        <tr>
+          <td class="pos pos4" id="3"></td>
+          <td class="pos pos5" id="4"></td>
+          <td class="pos pos6" id="5"></td>
+        </tr>
+        <tr>
+          <td class="pos pos7" id="6"></td>
+          <td class="pos pos8" id="7"></td>
+          <td class="pos pos9" id="8"></td>
+        </tr>
+      </table>
+    </div> <!-- End of table div -->
 
-  <div class="new-game">
-    <p class="new-game-p">How many players?:</p>
-    <button class="players one-player" id="one" value="1">One</button>
-    <button class="players two-players" id="two" value="2">Two</button>
-  </div>
-  
-  <div class="choose-symbol">
-    <p class="choose-symbol-p">Player one please choose your symbol:</p>
-    <button class="symbol crossSelection" value="X">X</button>
-    <button class="symbol naughtSelection" value="O">O</button>
-  </div>
-  
-  <div class="score-div-top">
-    <p class="score-div1 color2">Plyr #1 - <span class="p1s color5">0</span></p>
-    <p class="score-divider"> || </p>
-    <p class="score-div2 color7">Plyr <span class="aiswap">AI</span> - <span class="p2s color5">0</span></p>
-    <break></break>
-    <button id="reset-button" class="reset" onClick="location.reload()">Reset Game</button>
-    <button id="continue-button" class="continue" onClick="continueGame()">Next Game</button>
-  </div>
+    <div class="new-game">
+      <p class="new-game-p">How many players?:</p>
+      <button class="players one-player" id="one" value="1">One</button>
+      <button class="players two-players" id="two" value="2">Two</button>
+    </div>
+    
+    <div class="choose-symbol">
+      <p class="choose-symbol-p">Player one please choose your symbol:</p>
+      <button class="symbol crossSelection" value="X">X</button>
+      <button class="symbol naughtSelection" value="O">O</button>
+    </div>
+    
+    <div class="score-div-top">
+      <p class="score-div1 color2">Plyr #1 - <span class="p1s color5">0</span></p>
+      <p class="score-divider"> || </p>
+      <p class="score-div2 color7">Plyr <span class="aiswap">AI</span> - <span class="p2s color5">0</span></p>
+      <break></break>
+      <button id="reset-button" class="reset" onClick="location.reload()">Reset Game</button>
+      <button id="continue-button" class="continue" onClick="continueGame()">Next Game</button>
+    </div>
 
-</div> <!-- End of Container Div -->
+  </div> <!-- End of Container Div -->
   
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
