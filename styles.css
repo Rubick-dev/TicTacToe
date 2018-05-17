@@ -27,6 +27,7 @@ table {
   margin: auto;
   border-collapse: collapse;
   background: slategray;
+  transition: background-color 3.5s ease-in-out;
 }
 
 td {
@@ -40,7 +41,7 @@ td {
   vertical-align: middle;
   cursor: pointer;
   color:black;
-  /* color: rgb(255, 176, 0); */
+  transition: background-color .1s ease-in-out;
 }
 
 
@@ -217,6 +218,7 @@ padding-right: 30px;
   color: #8A325D ;
 }
 
+
 /* ON HOVER - SET BACKGROUND */
 .pos1:hover {
   background: #AA5239;
@@ -252,6 +254,44 @@ padding-right: 30px;
 
 .pos9:hover {
   background: #8A325D;
+}
+
+
+/* animation background colours */
+.colour1 {
+  background-color: #AA5239;
+}
+
+.colour2 {
+  background-color: #2F456E;
+}
+
+.colour3 {
+  background-color: #3A8831;
+}
+
+.colour4 {
+  background-color: #413272;
+}
+
+.colour5 {
+  background-color: #A4A63C;
+}
+
+.colour6 {
+  background-color: #276B5C;
+}
+
+.colour7 {
+  background-color: #9E3947;
+}
+
+.colour8 {
+  background-color: #A77D3C;
+}
+
+.colour9 {
+  background-color: #8A325D ;
 }
 
 

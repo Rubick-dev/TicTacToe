@@ -18,10 +18,22 @@ var plyTwoScore = 0; // displays the score of player2
 var ranPos, filteredPosLen; //part of the random position algorithm for the AI
 
 // Display messages
-var aiTurnMessage = "The AI is taking a turn";
-var ply1TurnMessage = "Your turn Player #1";
-var ply2TurnMessage = "Your turn Player #2";
-var initMsg = "Please Choose Game Options below";
+const aiTurnMessage = "The AI is taking a turn";
+const ply1TurnMessage = "Your turn Player #1";
+const ply2TurnMessage = "Your turn Player #2";
+const initMsg = "Please Choose Game Options below";
+
+
+// Display colours
+// const col1 = "#AA5239";
+// const col2 = "#2F456E";
+// const col3 = "#3A8831";
+// const col4 = "#413272";
+// const col5 = "#A4A63C";
+// const col6 = "#276B5C";
+// const col7 = "#9E3947";
+// const col8 = "#A77D3C";
+// const col9 = "#8A325D";
 
 
 initializeGame(); //starts the game
@@ -52,44 +64,48 @@ function initializeGame(){
 // ran after the continue button is pressed
 function continueGame(){
   console.log("### Started new game after hitting Continue ###");
-  clearGameBoard();
-  document.querySelector(".continue").style.visibility = "hidden";
-  if (numPlayers == "one") {
-    for (let i = 0; i < tttCells.length; i++) {
-      tttCells[i].addEventListener('click', turnAIClick, false);
-    }
-    if (plyTurn == "2") {
-      console.log("AI Player turn first");
-      AIsTurn();
-      setTimeout(function() { turn(getRandomPos(), plyAI);
-      }, 2000);
+  resetAnimation();
+  setTimeout(function() { 
+    clearGameBoard();
+    document.querySelector(".continue").style.visibility = "hidden";
+    if (numPlayers == "one") {
+      for (let i = 0; i < tttCells.length; i++) {
+        tttCells[i].addEventListener('click', turnAIClick, false);
+      }
+      if (plyTurn == "2") {
+        console.log("AI Player turn first");
+        AIsTurn();
+        setTimeout(function() { turn(getRandomPos(), plyAI);
+        }, 2000);
+      } else {
+        ply1sTurn();
+      }
     } else {
-      ply1sTurn();
+      for (let j = 0; j < tttCells.length; j++){
+        tttCells[j].addEventListener('click', twoPlayerGame, false);
+      }
+      if (plyTurn == "2") {
+        console.log("Player 2 first go");
+        ply2sTurn();
+      } else {
+        ply1sTurn();
+      }
     }
-  } else {
-    for (let j = 0; j < tttCells.length; j++){
-      tttCells[j].addEventListener('click', twoPlayerGame, false);
-    }
-    if (plyTurn == "2") {
-      console.log("Player 2 first go");
-      ply2sTurn();
-    } else {
-      ply1sTurn();
-    }
-  }
-  console.log(tttBoard + " after continue game button, array for tttBoard");
+  }, 2500);
+  
 };
 
 
 // Function for playing the next game without hard resetting everything
 function clearGameBoard(){
   tttBoard = Array.from(Array(9).keys());
+  console.log(tttBoard + " after continue game button, array for tttBoard");
   document.querySelector('.p1s').innerText = plyOneScore;
   document.querySelector('.p2s').innerText = plyTwoScore;
   //Setting player to go first
   plyTurn = Math.floor(Math.random() * 2) + 1;
   console.log(plyTurn + " randomed players turn");
-  //Setting the tttCells to clear
+  // Setting the tttCells to clear
   for (let i = 0; i < tttCells.length; i++) {
     tttCells[i].innerText = '';
     tttCells[i].style.removeProperty('background-color');
@@ -227,7 +243,7 @@ function turnAIClick(tttbox){
       if (!checkIfTie()){
         setTimeout(function() { 
           turn(getRandomPos(), plyAI);
-        }, 2500);
+        }, 2000);
       }
     }
   }
@@ -307,6 +323,7 @@ function checkWin(board, player) {
 function gameOver(gameWon) {
 	for (let index of winCombinations[gameWon.index]) {
 		document.getElementById(index).style.backgroundColor = gameWon.player == plyOne ? "#2F456E" : "#9E3947";
+    console.log(index + " index within gamewon function");
   }
   if (numPlayers == "one"){
     for (var i = 0; i < tttCells.length; i++) {
@@ -366,9 +383,79 @@ function fadeIn(el, display){
 
   (function fade() {
     var val = parseFloat(el.style.opacity);
-    if (!((val += .01) > 1)) {
+    if (!((val += .015) > 1)) {
       el.style.opacity = val;
       requestAnimationFrame(fade);
     }
   })();
 }
+
+
+// // Not using yet fade out function
+// function fadeOut(el){
+//   el.style.opacity = 1;
+
+//   (function fade() {
+//     if ((el.style.opacity -= .015) < 0) {
+//       el.style.display = "none";
+//     } else {
+//       requestAnimationFrame(fade);
+//     }
+//   })();
+// }
+
+
+// The reset annimation for the grid - disco board
+function resetAnimation(){
+  console.log("Reset Animation function has triggered");
+  for (let i = 0; i < tttCells.length; i++) {
+    tttCells[i].innerText = '';
+    tttCells[i].style.removeProperty('background-color');
+  }
+  var posArr = [];
+  while (posArr.length < 60) {
+    let ranNum = Math.floor((Math.random() * 9));
+    posArr.push(ranNum);
+  }
+  console.log(posArr + " Position array");
+
+  let x = 0;
+  let len = posArr.length;
+  (function theLoop (cellPositions, x) {
+    
+    setTimeout(function (){
+      let color = Math.floor((Math.random() * 9) +1);
+      let ranColorVar = "col" + color;
+      let cell = cellPositions[x];
+
+      document.getElementById(cell).style.backgroundColor= colorReturn();
+      // document.getElementById(cell).bgColor = colorReturn();
+
+      // sets the backgroundColor to the corrosponding variuable
+      function colorReturn(){
+        if (ranColorVar == "col1"){
+        return "#AA5239";
+      } else if (ranColorVar == "col2"){
+        return "#2F456E";
+      } else if (ranColorVar == "col3"){
+        return "#3A8831";
+      } else if (ranColorVar == "col4"){
+        return "#413272";
+      } else if (ranColorVar == "col5"){
+        return "#A4A63C";
+      } else if (ranColorVar == "col6"){
+        return "#276B5C";
+      } else if (ranColorVar == "col7"){
+        return "#9E3947";
+      } else if (ranColorVar == "col8"){
+        return "#A77D3C";
+      } else if (ranColorVar == "col9"){
+        return "#8A325D";
+      }
+    };
+      if (++x < len) {
+        theLoop(cellPositions, x);
+      }
+    }, 25);
+  })(posArr, x);
+};
