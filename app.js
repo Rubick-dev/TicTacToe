@@ -23,19 +23,6 @@ const ply1TurnMessage = "Your turn Player #1";
 const ply2TurnMessage = "Your turn Player #2";
 const initMsg = "Please Choose Game Options below";
 
-
-// Display colours
-// const col1 = "#AA5239";
-// const col2 = "#2F456E";
-// const col3 = "#3A8831";
-// const col4 = "#413272";
-// const col5 = "#A4A63C";
-// const col6 = "#276B5C";
-// const col7 = "#9E3947";
-// const col8 = "#A77D3C";
-// const col9 = "#8A325D";
-
-
 initializeGame(); //starts the game
 
 
@@ -75,7 +62,14 @@ function continueGame(){
       if (plyTurn == "2") {
         console.log("AI Player turn first");
         AIsTurn();
-        setTimeout(function() { turn(getRandomPos(), plyAI);
+        setTimeout(function() { 
+          let ranNumAIFG = Math.floor((Math.random() * 10));
+          console.log(ranNumAIFG + " FIRST GO after RESET ##### if this is ## 5 ## stupids turn");
+          if (ranNumAIFG == 5){
+          turn(getRandomPos(), plyAI);
+          } else {
+            turn(bestSpot(), plyAI);
+          }
         }, 2000);
       } else {
         ply1sTurn();
@@ -167,7 +161,14 @@ function setPlayer1Symbol(symbol){ // after choosing p1's Symbol this code is ru
     if (plyTurn == "2") {
       console.log("Player AI first go");
       AIsTurn();
-      setTimeout(function() { turn(getRandomPos(), plyAI);
+      setTimeout(function() {
+        let ranNumAIFG2 = Math.floor((Math.random() * 10));
+        console.log(ranNumAIFG2 + " FIRST GO ##### if this is ## 5 ## stupids turn");
+        if (ranNumAIFG2 == 5){
+        turn(getRandomPos(), plyAI);
+        } else {
+          turn(bestSpot(), plyAI);
+        }
       }, 2000);
     } else {
       ply1sTurn();
@@ -241,8 +242,14 @@ function turnAIClick(tttbox){
     turn(tttbox.target.id, plyOne);
     if ((!checkWin(tttBoard, plyOne))){
       if (!checkIfTie()){
-        setTimeout(function() { 
+        setTimeout(function() {
+          let ranNumAI = Math.floor((Math.random() * 10));
+          console.log(ranNumAI + " ##### if this is ## 5 ## stupids turn");
+          if (ranNumAI == 5){
           turn(getRandomPos(), plyAI);
+          } else {
+            turn(bestSpot(), plyAI);
+          }
         }, 2000);
       }
     }
@@ -391,20 +398,6 @@ function fadeIn(el, display){
 }
 
 
-// // Not using yet fade out function
-// function fadeOut(el){
-//   el.style.opacity = 1;
-
-//   (function fade() {
-//     if ((el.style.opacity -= .015) < 0) {
-//       el.style.display = "none";
-//     } else {
-//       requestAnimationFrame(fade);
-//     }
-//   })();
-// }
-
-
 // The reset annimation for the grid - disco board
 function resetAnimation(){
   console.log("Reset Animation function has triggered");
@@ -459,3 +452,66 @@ function resetAnimation(){
     }, 25);
   })(posArr, x);
 };
+
+
+//##### Branch impAI ####
+function emptySquares() {
+	return tttBoard.filter(s => typeof s == 'number');
+}
+
+function bestSpot() {
+	return minimax(tttBoard, plyAI).index;
+}
+
+
+// function to get best move
+function minimax(newBoard, player) {
+	var availSpots = emptySquares();
+
+	if (checkWin(newBoard, plyOne)) {
+		return {score: -10};
+	} else if (checkWin(newBoard, plyAI)) {
+		return {score: 10};
+	} else if (availSpots.length === 0) {
+		return {score: 0};
+	}
+	var moves = [];
+	for (var i = 0; i < availSpots.length; i++) {
+		var move = {};
+		move.index = newBoard[availSpots[i]];
+		newBoard[availSpots[i]] = player;
+
+		if (player == plyAI) {
+			var result = minimax(newBoard, plyOne);
+			move.score = result.score;
+		} else {
+			var result = minimax(newBoard, plyAI);
+			move.score = result.score;
+		}
+
+		newBoard[availSpots[i]] = move.index;
+
+		moves.push(move);
+	}
+
+	var bestMove;
+	if(player === plyAI) {
+		var bestScore = -10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score > bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	} else {
+		var bestScore = 10000;
+		for(var i = 0; i < moves.length; i++) {
+			if (moves[i].score < bestScore) {
+				bestScore = moves[i].score;
+				bestMove = i;
+			}
+		}
+	}
+
+	return moves[bestMove];
+}

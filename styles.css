@@ -27,7 +27,6 @@ table {
   margin: auto;
   border-collapse: collapse;
   background: slategray;
-  transition: background-color 3.5s ease-in-out;
 }
 
 td {
