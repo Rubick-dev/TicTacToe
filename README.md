@@ -30,3 +30,4 @@ This web app is a game that allows you to play against another person or the com
 1.0 - Polished first release. No bugs detected. Plans to add different game mode difficulties in the future.
   
 Rubick-dev - Please feel free to give any feedback at rubickdev.gmail.com
+#Note: Some of the JS code was taken from FCC, youtube solution video mentioned in the top of the JS file.
