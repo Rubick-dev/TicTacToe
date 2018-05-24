@@ -2,7 +2,7 @@
 FCC Advanced development challenge to build an AI TicTacToe game.
 
 1.[Electro TicTacToe Link](https://electrotictactoe.herokuapp.com/)    
-2.[alt tag](https://farm1.staticflickr.com/955/27277707587_9bc1411e30.jpg "Screenshot of the web page")
+![alt tag](https://farm1.staticflickr.com/955/27277707587_9bc1411e30.jpg "Screenshot of the web page")
 
 ### Introduction  
 This web app is a game that allows you to play against another person or the computer. Its based on the traditional ticTacToe game.
